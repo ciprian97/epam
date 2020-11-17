@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main component should render correctly 1`] = `
+<div
+  className="ui container"
+  style={
+    Object {
+      "marginTop": 200,
+      "width": "30%",
+    }
+  }
+>
+  <div
+    className="ui input"
+    style={
+      Object {
+        "width": "400px",
+      }
+    }
+  >
+    <input
+      defaultValue=""
+      onChange={[Function]}
+      placeholder="Search for a movie..."
+      type="text"
+    />
+  </div>
+  <p>
+    No results
+  </p>
+</div>
+`;

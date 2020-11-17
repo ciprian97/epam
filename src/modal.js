@@ -50,15 +50,7 @@ const ModalComponent = (props) => {
   };
 
   if (loading)
-    return (
-      <Loader
-        style={{ marginTop: "43%" }}
-        indeterminate
-        size="massive"
-        active
-        inline="centered"
-      />
-    );
+    return <Loader indeterminate size="massive" active inline="centered" />;
 
   return (
     <Modal

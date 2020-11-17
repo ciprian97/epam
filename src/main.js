@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Container, Input } from "semantic-ui-react";
+import { Container, Input, Loader } from "semantic-ui-react";
 import styled from "styled-components";
 
 import ModalComponent from "./modal";
@@ -8,6 +8,7 @@ import ModalComponent from "./modal";
 const Main = () => {
   const [films, setFilms] = useState([]);
   const [searchKey, setSearchKey] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSearchChange = (e) => {
     setSearchKey(e.target.value);
@@ -19,8 +20,12 @@ const Main = () => {
     );
   };
   useEffect(() => {
+    setLoading(true);
     axios.get("https://swapi.dev/api/films/").then((response) => {
-      setFilms(response.data.results);
+      if (response.status === 200) {
+        setFilms(response.data.results);
+        setLoading(false);
+      }
     });
   }, []);
 
@@ -30,6 +35,16 @@ const Main = () => {
     flex-direction: column;
   `;
 
+  if (loading)
+    return (
+      <Loader
+        style={{ marginTop: "50%" }}
+        indeterminate
+        size="massive"
+        active
+        inline="centered"
+      />
+    );
   return (
     <Container style={{ marginTop: 200, width: "30%" }}>
       <Input
